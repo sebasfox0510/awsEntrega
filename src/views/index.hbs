@@ -1,0 +1,91 @@
+<div class="col-md-6 offset-md-3">
+
+    <div class="card bg-dark text-light">
+        <div class="card-header">
+            <h1 class="h4 text-white">Lista de jugadores</h1>
+        </div>
+        
+        <div class="card-body">
+            {{#if jugadores}}
+                <ul class="list-group">
+                {{#each jugadores}}
+                    <li class="list-group-item flex justify-content-between align-items-center">
+                    <h3> {{nombre}} </h3>
+                    <h4> {{equipo}}  </h4>
+                    <p> {{email}} </p>
+                    <p> {{telefono}} </p>
+
+                    <a class="btn btn-warning" href="/delete-jugador/{{id}}">Eliminar</a>
+
+                    <a class="btn btn-info" href="/edit-jugador/{{id}}">
+                        Edit
+                    </a>
+
+                    </li>
+                {{/each}}
+                </ul>
+            {{else}}
+                <p>No hay jugadores aun</p>
+            {{/if}}    
+        </div>
+
+
+        <div class="card-footer">
+
+            <form action="{{#unless jugador.id}}/new-jugador{{else}}/update-jugador/{{jugador.id}}{{/unless}}" method="POST"> 
+
+            <div class="row">
+                <div class="col">
+                    <label for="nombre">Nombre: </label>
+                    <input type="text" name="nombre" placeholder="nombre" id="nombre"
+                    value="{{jugador.nombre}}"
+                    class="form-control mb-2">
+                </div>
+
+                <div class="col">
+                    <label for="equipo">Equipo: </label>
+                    <input type="text" name="equipo" placeholder="equipo" id="equipo"
+                    value="{{jugador.equipo}}"
+                    class="form-control mb-2">
+                </div>
+            </div>
+
+        <div class="row">
+
+                <div class="col">
+                    <label for="email">Email: </label>
+                    <input type="text" name="email" placeholder="email" id="email"
+                    value="{{jugador.email}}"
+                    class="form-control mb-2">
+                </div>
+
+                <div class="col">
+                    <label for="telefono">Telefono: </label>
+                    <input type="text" name="telefono" placeholder="telefono" id="telefono"
+                    value="{{jugador.telefono}}"
+                    class="form-control mb-2">
+                </div>
+
+            </div>
+
+            {{#if jugador.id}}
+            <button class="btn btn-success btn-block">
+                Actualizar
+            </button>
+            <a href="/" class="btn btn-warning">
+                Cancelar
+            </a>
+            {{else}}
+            <button class="btn btn-primary btn-block">
+                Agregar
+            </button>
+            {{/if}}
+
+            
+            </form>
+
+        </div>
+    </div>
+
+
+</div>
