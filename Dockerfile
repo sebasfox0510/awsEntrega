@@ -1,12 +1,10 @@
-FROM node:12.22.1-alpine3.11
+FROM node:16-bullseye
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY . .
 
 RUN npm install
-
-COPY . .
 
 EXPOSE 3000
 
