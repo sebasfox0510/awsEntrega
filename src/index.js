@@ -1,5 +1,5 @@
 const app = require("./app");
-
+const app = require("dotenv").config();
 
 async function main() {
   app.listen(3000);
